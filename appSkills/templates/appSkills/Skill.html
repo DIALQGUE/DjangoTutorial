@@ -1,11 +1,25 @@
 {% extends 'appGeneral/components/base.html' %}
 
 {% block siteTitle %}
-Skill No. {{skillID}}
+{% if skill is not None %}
+    {{skill.title}}
+{% else %}
+    Not found
+{% endif %}
 {% endblock %}
 
 {% block content %}
+{% if skill is not None %}
 <div>
-    <h2>Skill No. {{skillID}}</h2>
+    <h2>Skills</h2>
+        <h3>{{skill.title}}</h3>
+        <p>Level: {{skill.level}}</p>
+        {%if skill.example is not None %}
+            <p>Example: <a href = "{{skill.example}}">{{skill.example}}</a></p>
+        {% endif %}
 </div>
+{% else %}
+    <p>Requested skill not found, sorry.</p>
+{% endif %}
+
 {% endblock %}

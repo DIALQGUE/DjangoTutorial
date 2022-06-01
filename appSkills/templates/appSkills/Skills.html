@@ -7,14 +7,16 @@ Skills
 {% block content %}
 <div>
     <h2>Skills</h2>
-    <p>C/C++</p>
-    <p>R</p>
-    <p>Python</p>
-    <p>MATLAB</p>
-    <p>.NET</p>
-    <p>Java</p>
-    <p>JavaScript</p>
-    <p>English</p>
-    <p>Japanese</p>
+    {% for skill in skills%}
+    <div style = "background-color: lightcyan;">
+        <h3><a href = "{% url 'skill' skill.id%}">{{skill.title}}</a></h3>
+        <p>Level: {{ skill.level }}</p>
+        {%if skill.example is not None %}
+            <p>Example: <a href = "{{skill.example}}">{{skill.example}}</a></p>
+        {% endif %}
+    </div>
+    {% empty %}
+        <h3>Nothing to see here yet.</h3>
+    {% endfor %}
 </div>
 {% endblock %}
