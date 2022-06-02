@@ -16,6 +16,7 @@
         <p>Level: {{skill.level}}</p>
         {%if skill.example is not None %}
             <p>Example: <a href = "{{skill.example}}">{{skill.example}}</a></p>
+            <p>Description: {{ skill.description }}</p>
         {% endif %}
 </div>
 {% else %}
