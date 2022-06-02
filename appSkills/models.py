@@ -4,14 +4,14 @@ from django.db import models
 
 class Skill(models.Model):
     LEVEL = [
-        ('beginner', 'Beginner'),
-        ('intermediate', 'Intermediate'),
-        ('practical', 'Practical'),
-        ('advanced', 'Advanced'),
-        ('professional', 'Professional')
+        ('Beginner', 'Beginner'),
+        ('Intermediate', 'Intermediate'),
+        ('Practical', 'Practical'),
+        ('Advanced', 'Advanced'),
+        ('Professional', 'Professional')
     ]
     
-    title = models.CharField(max_length = 20)
+    title = models.CharField(max_length = 20, unique = True)
     level = models.CharField(max_length = 20, choices = LEVEL)
-    example = models.CharField(max_length = 150, null = True)
-    description = models.CharField(max_length = 288, null = True)
+    example = models.CharField(max_length = 150, default = '')
+    description = models.CharField(max_length = 300, default = '')

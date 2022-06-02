@@ -1,7 +1,8 @@
-from asyncio.windows_events import NULL
-from ftplib import all_errors
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.urls import reverse
+
+from appSkills.forms import addSkillForm
 from .models import Skill
 
 allSkills = [
@@ -23,5 +24,14 @@ def skill(request, skillID):
     context = {'skill':selected}
     return render(request, 'appSkills/Skill.html', context)
 
-    def addSkill(request):
-        
+def addSkill(request):
+    if request.method == 'POST':
+        form = addSkillForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('skills'))
+    else:
+        form = addSkillForm()
+                
+    context = {'form': form}
+    return render(request, 'appSkills/addSkill.html', context)

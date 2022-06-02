@@ -1,0 +1,36 @@
+{% extends 'appGeneral/components/base.html' %}
+
+{% block siteTitle %}
+ | Add new skill
+{% endblock %}
+
+{% block content %}
+<h2>Add new skill</h2>
+<form action = "{% url 'addSkill' %}" method = "post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div style = "margin-bottom: 16px;">
+        {{ form.title.label_tag }}
+        {{ form.title}}
+        {{ from.title.errors }}
+    </div>
+    <div style = "margin-bottom: 16px;">
+        {{ form.level.label_tag }}
+        {{ form.level }}
+        {{ from.level.errors }}
+    </div>
+    <div style = "margin-bottom: 16px;">
+        {{ form.example.label_tag }}
+        {{ form.example }}
+        {{ from.example.errors }}
+    </div>
+    <div style = "margin-bottom: 16px;">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+        {{ from.description.errors }}
+    </div>
+    <div style = "margin-bottom: 16px;">
+        <button type = "submit"> Add skill </button>
+    </div>
+</form>
+{% endblock %}
