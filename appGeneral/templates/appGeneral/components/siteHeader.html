@@ -1,5 +1,9 @@
+{% load static %}
 <header style = "background-color: lightseagreen;">
-    <a href = "{% url 'home' %}">WNWNS</a>
+    <a href = "{% url 'home' %}">
+        <img src = "{% static 'appGeneral/Among_Us.png' %}">
+        <span>WNWNS</span>
+    </a>
     <a href = "{% url 'skills' %}">Skills</a>
     <a href = #>About me</a>
 </header>

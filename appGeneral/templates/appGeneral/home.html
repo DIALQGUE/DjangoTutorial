@@ -1,9 +1,13 @@
 {% extends 'appGeneral/components/base.html' %}
+{% load static %}
 
 {% block content %}
 <div>
+    <img src = "{% static 'appGeneral/self_bg.jpg' %}">
+</div>
+<section>
     <h1>Hello</h1>
     <p>My name is Wanna Wannasin.</p>
     <p>Nice to meet you.</p>
-</div>
+</section>
 {% endblock %}
