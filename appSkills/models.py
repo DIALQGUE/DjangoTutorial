@@ -13,5 +13,7 @@ class Skill(models.Model):
     
     title = models.CharField(max_length = 20, unique = True)
     level = models.CharField(max_length = 20, choices = LEVEL)
+    levelRank = models.IntegerField(default = 1)
     example = models.CharField(max_length = 150, default = '', blank = True)
+    exampleName = models.CharField(max_length = 50, default = '', blank = True)
     description = models.CharField(max_length = 300, default = '', blank = True)

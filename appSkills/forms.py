@@ -8,6 +8,7 @@ class addSkillForm(forms.ModelForm):
         labels = {
             'title' : 'Title',
             'example' : 'Example',
+            'exampleName' : 'Example name',
             'description' : 'Description'
         }
 
