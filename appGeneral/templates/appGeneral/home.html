@@ -2,12 +2,10 @@
 {% load static %}
 
 {% block content %}
-<div>
-    <img src = "{% static 'appGeneral/self_bg.jpg' %}">
-</div>
-<section>
-    <h1>Hello</h1>
-    <p>My name is Wanna Wannasin.</p>
-    <p>Nice to meet you.</p>
+<section class = "homeLanding">
+    <h1 class = "homeLandingItem">Hello</h1>
+    <p class = "homeLandingItem homeLandingText">My name is Wanna Wannasin.</p>
+    <p class = "homeLandingItem homeLandingText">Nice to meet you :)</p>
+    <a class = "button" href = "{% url 'skills' %}">I can do these!</a>
 </section>
 {% endblock %}

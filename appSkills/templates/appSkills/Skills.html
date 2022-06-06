@@ -5,19 +5,25 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <h2>Skills</h2>
-    {% for skill in skills%}
-    <div style = "background-color: lightcyan;">
-        <h3><a href = "{% url 'skill' skill.id%}">{{skill.title}}</a></h3>
-        <p>Level: {{ skill.level }}</p>
-        {%if skill.example != '' %}
-            <p>Example: <a href = "{{skill.example}}">gitHub</a></p>
-            <p>Description: {{ skill.description }}</p>
+<section class = "contentSection contentSectionSmall">
+    <div class = "contentContainer">
+        <h2>Skills</h2>
+        {% if skills.count > 0 %}
+        <div class = "grid grid-3">
+            {% for skill in skills %}
+                <div class = "skillBlock" >
+                <h4><a href = "{% url 'skill' skill.id%}">{{skill.title}}</a></h4>
+                <p>Level: {{ skill.level }}</p>
+                {%if skill.example != '' %}
+                    <p>Example: <a href = "{{skill.example}}">{{skill.exampleName}}</a></p>
+                {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3>Nothing to see here yet.</h3>
         {% endif %}
+        
     </div>
-    {% empty %}
-        <h3>Nothing to see here yet.</h3>
-    {% endfor %}
-</div>
+</section>
 {% endblock %}

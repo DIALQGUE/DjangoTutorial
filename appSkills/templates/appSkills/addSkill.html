@@ -5,37 +5,42 @@
 {% endblock %}
 
 {% block content %}
-<h2>Add new skill</h2>
-<form action = "{% url 'addSkill' %}" method = "post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    <div style = "margin-bottom: 16px;">
-        {{ form.title.label_tag }}
-        {{ form.title}}
-        {{ from.title.errors }}
+<section class = "contentSection contentSectionSmall">
+    <div class = "contentContainer contentContainerNarrow">
+        <h2>Add new skill</h2>
+        <form action = "{% url 'addSkill' %}" method = "post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class = formField>
+                {{ form.title.label_tag }}
+                {{ form.title}}
+                {{ from.title.errors }}
+            </div>
+            <div class = formField>
+                {{ form.level.label_tag }}
+                {{ form.level }}
+                {{ from.level.errors }}
+            </div>
+            <div class = formField>
+                {{ form.example.label_tag }}
+                {{ form.example }}
+                {{ from.example.errors }}
+            </div>
+            <div class = formField>
+                {{ form.exampleName.label_tag }}
+                {{ form.exampleName }}
+                {{ from.example.errors }}
+            </div>
+            <div class = formField>
+                {{ form.description.label_tag }}
+                {{ form.description }}
+                {{ from.description.errors }}
+            </div>
+            <div class = "center">
+                <button class = "button" type = "submit">Add skill</button>
+            </div>
+        </form>
     </div>
-    <div style = "margin-bottom: 16px;">
-        {{ form.level.label_tag }}
-        {{ form.level }}
-        {{ from.level.errors }}
-    </div>
-    <div style = "margin-bottom: 16px;">
-        {{ form.example.label_tag }}
-        {{ form.example }}
-        {{ from.example.errors }}
-    </div>
-    <div style = "margin-bottom: 16px;">
-        {{ form.exampleName.label_tag }}
-        {{ form.exampleName }}
-        {{ from.example.errors }}
-    </div>
-    <div style = "margin-bottom: 16px;">
-        {{ form.description.label_tag }}
-        {{ form.description }}
-        {{ from.description.errors }}
-    </div>
-    <div style = "margin-bottom: 16px;">
-        <button type = "submit"> Add skill </button>
-    </div>
-</form>
+</section>
+
 {% endblock %}

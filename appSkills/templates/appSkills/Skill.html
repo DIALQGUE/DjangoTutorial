@@ -9,18 +9,25 @@
 {% endblock %}
 
 {% block content %}
-{% if skill is not None %}
-<div>
-    <h2>Skills</h2>
-        <h3>{{skill.title}}</h3>
-        <p>Level: {{skill.level}}</p>
-        {%if skill.example is not None %}
-            <p>Example: <a href = "{{skill.example}}">{{skill.example}}</a></p>
-            <p>Description: {{ skill.description }}</p>
-        {% endif %}
-</div>
-{% else %}
-    <p>Requested skill not found, sorry.</p>
-{% endif %}
+<section class = "contentSection contentSectionSmall">
+    <div class = "contentContainer">
+    {% if skill is not None %}
+        <div>
+            <h4>Skill</h4>
+                <h2>{{skill.title}}</h2>
+                <h6>Level</h6>
+                <p>{{skill.level}}</p>
+                {%if skill.example != '' %}
+                    <h6>Example</h6>
+                    <p><a href = "{{skill.example}}">{{skill.example}}</a></p>
+                    <h6>Description</h6>
+                    <p>{{ skill.description }}</p>
+                {% endif %}
+        </div>
+    {% else %}
+        <p>Requested skill not found, sorry.</p>
+    {% endif %}
+    </div>
+</section>
 
 {% endblock %}

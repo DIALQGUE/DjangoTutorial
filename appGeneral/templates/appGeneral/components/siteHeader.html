@@ -1,9 +1,9 @@
 {% load static %}
-<header style = "background-color: lightseagreen;">
-    <a href = "{% url 'home' %}">
+<header class = "siteHeader">
+    <a class = "siteHeaderItem siteHeaderHonk" href = "{% url 'home' %}">
         <img src = "{% static 'appGeneral/Among_Us.png' %}">
         <span>WNWNS</span>
     </a>
-    <a href = "{% url 'skills' %}">Skills</a>
-    <a href = #>About me</a>
+    <a class = "siteHeaderItem" href = "{% url 'skills' %}">Skills</a>
+    <a class = "siteHeaderItem" href = "{% url 'contacts' %}">Contacts</a>
 </header>
