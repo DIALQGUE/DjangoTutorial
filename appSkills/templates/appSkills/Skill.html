@@ -15,12 +15,13 @@
         <div>
             <h4>Skill</h4>
                 <h2>{{skill.title}}</h2>
-                <h6>Level</h6>
+                <h5>Level</h5>
                 <p>{{skill.level}}</p>
                 {%if skill.example != '' %}
-                    <h6>Example</h6>
+                    <h5>Example</h5>
+                    <h6>{{skill.exampleName}}</h6>
                     <p><a href = "{{skill.example}}">{{skill.example}}</a></p>
-                    <h6>Description</h6>
+                    <h5>Description</h5>
                     <p>{{ skill.description }}</p>
                 {% endif %}
         </div>

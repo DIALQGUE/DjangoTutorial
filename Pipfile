@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
-mysql-connector-python = "*"
 python-dotenv = "*"
 gunicorn = "*"
+psycopg2 = "*"
+dj-database-url = "*"
+mysql-connector-python = "*"
+heroku = "*"
 
 [dev-packages]
 

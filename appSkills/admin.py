@@ -3,7 +3,7 @@ from appSkills.models import Skill
 
 class SkillAdmin(admin.ModelAdmin):
     search_fields = ['title']
-    list_display = ['title', 'levelRank', 'level', 'example', 'exampleName', 'description']
+    list_display = ['title', 'level', 'example', 'exampleName', 'description']
     list_filter = ['level']
     
 # Register your models here.

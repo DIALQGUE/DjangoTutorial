@@ -15,6 +15,7 @@ class addSkillForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(addSkillForm, self).__init__(*args, **kwargs)
         self.fields['example'].required = False
+        self.fields['exampleName'].required = False
         self.fields['description'].required = False
         
     level = forms.ChoiceField(
