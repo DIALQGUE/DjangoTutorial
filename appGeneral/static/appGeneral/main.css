@@ -28,6 +28,12 @@ html {
     font-weight: 400;
 }
 
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: lightseagreen;
     font-weight: 700;
@@ -167,6 +173,7 @@ a {
     background-color: lightseagreen;
     text-align: center;
     padding: 8px;
+    width: 100%;
 }
 
 .siteFooter a {
@@ -222,6 +229,7 @@ input[type = "text"]:focus {
     min-height: 70vh;
     max-height: 90vh;
     padding: 120px 250px;
+    flex-grow: 1;
 }
 
 .homeLandingItem {
