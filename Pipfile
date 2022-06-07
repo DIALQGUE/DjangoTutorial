@@ -11,6 +11,7 @@ psycopg2 = "*"
 dj-database-url = "*"
 mysql-connector-python = "*"
 heroku = "*"
+whitenoise = "*"
 
 [dev-packages]
 
