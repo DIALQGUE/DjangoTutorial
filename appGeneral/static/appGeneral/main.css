@@ -219,17 +219,19 @@ input[type = "text"]:focus {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    max-height: 71vh;
+    min-height: 70vh;
+    max-height: 90vh;
     padding: 120px 250px;
 }
 
 .homeLandingItem {
-    text-shadow: 1px 1px 3px rgba(250, 250, 250, 0.7);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     margin-top: 0px;
     margin-bottom: 24px;
 }
 
 .homeLandingText {
+    color: whitesmoke;
     font-size: 24px;
     font-weight: 700;
 }
