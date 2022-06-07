@@ -12,6 +12,8 @@ dj-database-url = "*"
 mysql-connector-python = "*"
 heroku = "*"
 whitenoise = "*"
+pip = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
