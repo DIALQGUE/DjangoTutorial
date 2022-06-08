@@ -2,8 +2,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from rest_framework import viewsets, routers
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 from appSkills.forms import addSkillForm
 from .models import Skill
+from .serializers import skillSerializer
+
 
 # Create your views here.
 def skills(request):
@@ -63,3 +69,12 @@ def deleteSkill(request, skillID):
     
     skill.delete()
     return HttpResponseRedirect(reverse('skills'))
+
+# api views
+class skillsList(viewsets.ModelViewSet):
+    
+    serializer_class = skillSerializer
+    queryset = Skill.objects.all()
+
+router = routers.DefaultRouter()
+router.register(r'skills', skillsList, 'skills')
