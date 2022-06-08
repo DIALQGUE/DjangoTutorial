@@ -25,6 +25,9 @@
                     <p>{{ skill.description }}</p>
                 {% endif %}
         </div>
+        <div class = "center">
+            <a class = "button" href = "{% url 'editSkill' skillID%}">Edit this Skill</a>
+        </div>
     {% else %}
         <p>Requested skill not found, sorry.</p>
     {% endif %}

@@ -1,20 +1,19 @@
 {% extends 'appGeneral/components/base.html' %}
 
 {% block siteTitle %}
- | Add new skill
+ | Edit {{ form.title.value }}
 {% endblock %}
 
 {% block content %}
 <section class = "contentSection contentSectionSmall">
     <div class = "contentContainer contentContainerNarrow">
-        <h2>Add new skill</h2>
-        <form action = "{% url 'addSkill' %}" method = "post">
+        <h2>Edit {{ form.title.value }}</h2>
+        <form action = "{% url 'editSkill' skillID %}" method = "post">
             {% include 'appSkills/components/skillFormBase.html' %}
             <div class = "center">
-                <button class = "button" type = "submit">Add skill</button>
+                <button class = "button" type = "submit">Confirm Edit</button>
             </div>
         </form>
     </div>
 </section>
-
 {% endblock %}

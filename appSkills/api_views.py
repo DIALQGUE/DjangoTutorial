@@ -28,4 +28,4 @@ class skillsList(viewsets.ModelViewSet):
 
 
 router = routers.DefaultRouter()
-router.register(r'/skills', skillsList, 'skills')
+router.register(r'skills', skillsList, 'skills')
