@@ -102,8 +102,21 @@ a {
     transition: background-color 300ms;
 }
 
+.multipleButton {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.alertButton {
+    background-color: crimson;
+}
+
 .button:hover {
     background-color: dodgerblue;
+}
+
+.alertButton:hover {
+    background-color: tomato;
 }
 
 .contentSection {

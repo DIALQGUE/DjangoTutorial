@@ -26,7 +26,8 @@
                 {% endif %}
         </div>
         <div class = "center">
-            <a class = "button" href = "{% url 'editSkill' skillID%}">Edit this Skill</a>
+            <a class = "button multipleButton " href = "{% url 'editSkill' skillID%}">Edit this Skill</a>
+            <a class = "button multipleButton alertButton">Delete this Skill</a>
         </div>
     {% else %}
         <p>Requested skill not found, sorry.</p>
@@ -34,4 +35,15 @@
     </div>
 </section>
 
+<script type = "text/javascript">
+    var confirmButton = document.querySelector('.alertButton')
+
+    confirmButton.addEventListener("click", function() {
+        if (confirm('This skill will be gone forever!')) {
+            window.location.href = "{% url 'deleteSkill' skillID%}"
+        } else {
+            return false;
+        }
+    })
+</script>
 {% endblock %}

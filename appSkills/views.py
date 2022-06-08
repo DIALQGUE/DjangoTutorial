@@ -43,7 +43,6 @@ def editSkill(request, skillID):
     
     if request.method == 'POST':
         form = addSkillForm(request.POST, instance = skill)
-        print('test')
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('skills'))
@@ -54,3 +53,13 @@ def editSkill(request, skillID):
 
     context = {'form': form, 'skillID': skillID}
     return render(request, 'appSkills/editSkill.html', context)
+
+def deleteSkill(request, skillID):
+    try:
+        skill = Skill.objects.get(id = skillID)
+    except:
+        print('Skill not found')
+        return render(request, 'appSkills/Skill.html', {'skill': None})
+    
+    skill.delete()
+    return HttpResponseRedirect(reverse('skills'))

@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.skills, name = 'skills'),
     path('<int:skillID>', views.skill, name = 'skill'),
     path('add', views.addSkill, name = 'addSkill'),
+    path('<int:skillID>/delete', views.deleteSkill, name = 'deleteSkill'),
     path('<int:skillID>/edit', views.editSkill, name = 'editSkill'),
     path('api', include(router.urls), name = 'apiSkill'),
 ]
