@@ -13,6 +13,22 @@ class Skill(models.Model):
     
     title = models.CharField(max_length = 20, unique = True)
     level = models.CharField(max_length = 20, choices = LEVEL)
-    example = models.CharField(max_length = 150, default = '', blank = True)
-    exampleName = models.CharField(max_length = 50, default = '', blank = True)
-    description = models.CharField(max_length = 300, default = '', blank = True)
+
+    def __str__(self):
+        return '{}: {}'.format(self.id, self.title)
+
+    def exampleSet(self):
+        exampleSet = SkillExample.objects.filter(skillID = self.id)
+        if(exampleSet.__len__() > 0):
+            return list(exampleSet)
+        return None
+
+class SkillExample(models.Model):
+    
+    skillID = models.ForeignKey(Skill, on_delete = models.CASCADE)
+    exampleName = models.CharField(max_length = 50)
+    exampleURLs = models.CharField(max_length = 150)
+    description = models.CharField(max_length = 300)
+
+    def __str__(self):
+        return '{}: {}'.format(self.id, self.exampleName)

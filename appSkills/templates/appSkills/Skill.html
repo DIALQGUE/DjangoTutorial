@@ -17,13 +17,13 @@
                 <h2>{{skill.title}}</h2>
                 <h5>Level</h5>
                 <p>{{skill.level}}</p>
-                {%if skill.example != '' %}
+                <!-- {%if skill.example != '' %}
                     <h5>Example</h5>
                     <h6>{{skill.exampleName}}</h6>
                     <p><a href = "{{skill.example}}">{{skill.example}}</a></p>
                     <h5>Description</h5>
                     <p>{{ skill.description }}</p>
-                {% endif %}
+                {% endif %} -->
         </div>
         <div class = "center">
             <a class = "button multipleButton " href = "{% url 'editSkill' skillID%}">Edit this Skill</a>
