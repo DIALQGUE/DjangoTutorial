@@ -17,10 +17,10 @@ class Skill(models.Model):
     def __str__(self):
         return '{}: {}'.format(self.id, self.title)
 
-    def exampleSet(self):
+    def example(self):
         exampleSet = SkillExample.objects.filter(skillID = self.id)
         if(exampleSet.__len__() > 0):
-            return list(exampleSet)
+            return exampleSet
         return None
 
 class SkillExample(models.Model):

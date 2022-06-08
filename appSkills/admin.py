@@ -9,15 +9,18 @@ class ExampleInline(admin.StackedInline):
 class SkillAdmin(admin.ModelAdmin):
     inlines = [ExampleInline]
 
-    list_display = [f.name for f in Skill._meta.fields] + ['exampleSet']
+    list_display = [f.name for f in Skill._meta.fields] + ['exampleList']
     ordering = ['id']
 
     search_fields = ['title']
     list_filter = ['level']
 
-    def get_queryset(self, request):
-        queryset = super(SkillAdmin, self).get_queryset(request)
-        return queryset
+    def exampleList(self, obj):
+        example = obj.example()
+        if(example is not None):
+            return list(obj.example())
+        else:
+            return example
 
 class ExampleAdmin(admin.ModelAdmin):
     list_display = [f.name for f in SkillExample._meta.fields]
