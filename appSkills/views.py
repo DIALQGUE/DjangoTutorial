@@ -6,7 +6,7 @@ from rest_framework import viewsets, routers
 
 from appSkills.forms import addSkillForm, addSkillExampleFormSet
 from .models import Skill, SkillExample
-from .serializers import skillSerializer
+from .serializers import exampleSerializer, skillSerializer
 
 
 # Create your views here.
@@ -97,5 +97,11 @@ class skillsList(viewsets.ModelViewSet):
     serializer_class = skillSerializer
     queryset = Skill.objects.all()
 
+class exampleList(viewsets.ModelViewSet):
+    
+    serializer_class = exampleSerializer
+    queryset = SkillExample.objects.all()
+
 router = routers.DefaultRouter()
 router.register(r'skills', skillsList, 'skills')
+router.register(r'examples', exampleList, 'examples')
