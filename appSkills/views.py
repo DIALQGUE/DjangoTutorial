@@ -95,12 +95,25 @@ def deleteSkill(request, skillID):
 class skillsList(viewsets.ModelViewSet):
     
     serializer_class = skillSerializer
-    queryset = Skill.objects.all()
+    queryset = Skill.objects.order_by('id')
+
+    filter_fields = (
+        'level',
+    )
 
 class exampleList(viewsets.ModelViewSet):
     
     serializer_class = exampleSerializer
-    queryset = SkillExample.objects.all()
+    queryset = SkillExample.objects.order_by('id')
+
+    filter_fields = (
+        'skillID',
+    )
+
+    ordering_fields = (
+        'id',
+        'skillID',
+    )
 
 router = routers.DefaultRouter()
 router.register(r'skills', skillsList, 'skills')
