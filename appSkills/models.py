@@ -26,9 +26,9 @@ class Skill(models.Model):
 class SkillExample(models.Model):
     
     skillID = models.ForeignKey(Skill, on_delete = models.CASCADE)
-    exampleName = models.CharField(max_length = 50)
-    exampleURLs = models.CharField(max_length = 150)
+    title = models.CharField(max_length = 50)
+    URLs = models.CharField(max_length = 150)
     description = models.CharField(max_length = 300)
 
     def __str__(self):
-        return '{}: {}'.format(self.id, self.exampleName)
+        return '{}: {}'.format(self.id, self.title)

@@ -3,11 +3,9 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from rest_framework import viewsets, routers
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
 
-from appSkills.forms import addSkillForm
-from .models import Skill
+from appSkills.forms import addSkillForm, addSkillExampleFormSet
+from .models import Skill, SkillExample
 from .serializers import skillSerializer
 
 
@@ -28,16 +26,26 @@ def skill(request, skillID):
 
 def addSkill(request):
     if request.method == 'POST':
-        form = addSkillForm(request.POST)
-        if form.is_valid():
-            form.save()
+        skillForm = addSkillForm(request.POST)
+        exampleFormSet = addSkillExampleFormSet(request.POST)
+        if all([skillForm.is_valid(), exampleFormSet.is_valid()]):
+            skillID = skillForm.save()
+            examples = exampleFormSet.save(commit = False)
+            for example in examples:
+                example.skillID = skillID
+                example.save()
             return HttpResponseRedirect(reverse('skills'))
         else:
-            print(form.errors)
+            print(skillForm.errors)
+            print(exampleFormSet.errors)
     else:
-        form = addSkillForm()
+        skillForm = addSkillForm()
+        exampleFormSet = addSkillExampleFormSet(queryset = SkillExample.objects.none())
                 
-    context = {'form': form}
+    context = {
+        'skillForm': skillForm,
+        'exampleFormSet' : exampleFormSet
+        }
     return render(request, 'appSkills/addSkill.html', context)
 
 def editSkill(request, skillID):

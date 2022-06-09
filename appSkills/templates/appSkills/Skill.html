@@ -17,13 +17,19 @@
                 <h2>{{skill.title}}</h2>
                 <h5>Level</h5>
                 <p>{{skill.level}}</p>
-                <!-- {%if skill.example != '' %}
-                    <h5>Example</h5>
-                    <h6>{{skill.exampleName}}</h6>
-                    <p><a href = "{{skill.example}}">{{skill.example}}</a></p>
-                    <h5>Description</h5>
-                    <p>{{ skill.description }}</p>
-                {% endif %} -->
+                <h5>Example</h5>
+                {% with examples=skill.example %}
+                    {%if examples is not None %}
+                        {% for example in examples %}
+                            <div class = "example">
+                                <h6>{{ example.title }}</h6>
+                                <p><a href = "{{ example.URLs }}">{{ example.URLs }}</a></p>
+                                <h6>Description</h6>
+                                <p>{{ example.description }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
         </div>
         <div class = "center">
             <a class = "button multipleButton " href = "{% url 'editSkill' skillID%}">Edit this Skill</a>

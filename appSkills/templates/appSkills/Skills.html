@@ -14,9 +14,14 @@
                 <div class = "skillBlock" >
                 <h4><a href = "{% url 'skill' skill.id%}">{{skill.title}}</a></h4>
                 <p>Level: {{ skill.level }}</p>
-                <!-- {%if skill.example != '' %}
-                    <p>Example: <a href = "{{skill.example}}">{{skill.exampleName}}</a></p>
-                {% endif %} -->
+                {% if skill.example is not None %}
+                    {% with example=skill.example.first %}
+                        <p>Example: <a href = "{{example.URLs}}">{{example.title}}</a></p>
+                    {% endwith %}
+                    {% if skill.example.count > 1 %}
+                    <p> <a href = "{% url 'skill' skill.id%}">and more</a> </p>
+                    {% endif %}
+                {% endif %}
                 </div>
             {% endfor %}
         </div>

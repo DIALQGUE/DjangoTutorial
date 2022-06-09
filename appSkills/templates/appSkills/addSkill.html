@@ -9,12 +9,58 @@
     <div class = "contentContainer contentContainerNarrow">
         <h2>Add new skill</h2>
         <form action = "{% url 'addSkill' %}" method = "post">
-            {% include 'appSkills/components/skillFormBase.html' %}
+            {% csrf_token %}
+            <div class = "skillForm">
+                {% with form=skillForm %}
+                    {% include 'appSkills/components/formBase.html' %}
+                {% endwith %}
+            </div>
+            {% if exampleFormSet %}
+                <h3>Example</h3>
+                {{ exampleFormSet.management_form }}
+                <div class = "skillExampleFormList">
+                    {% for form in exampleFormSet %}
+                        <div class = "multipleForm">
+                            {% include 'appSkills/components/formBase.html' %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class = "hidden">
+                    {{ exampleFormSet.empty_form }}
+                </div>
+            {% endif %}
             <div class = "center">
-                <button class = "button" type = "submit">Add skill</button>
+                <button class = "button multipleButton addExampleButton">Add example</button>
+                <button class = "button multipleButton" type = "submit">Add skill</button>
             </div>
         </form>
     </div>
 </section>
 
+<script type = "text/javascript">
+    let addExampleForm = document.querySelector('.addExampleButton');
+    const totalNewForms = document.getElementById('id_form-TOTAL_FORMS');
+
+    addExampleForm.addEventListener("click", function(event) {
+        if(event){
+            event.preventDefault();
+        }
+        
+        const exampleForms = document.querySelectorAll('.multipleForm')
+        console.log(exampleForms)
+        const formCount = exampleForms.length
+
+        const newExampleForm = document.querySelector('.hidden').cloneNode(true);
+        const target = document.querySelector('.skillExampleFormList');
+
+        newExampleForm.setAttribute('class', 'multipleForm');
+        newExampleForm.setAttribute('id', `form-${formCount}`);
+        
+        const regex = new RegExp('__prefix__', 'g');
+        newExampleForm.innerHTML = newExampleForm.innerHTML.replace(regex, formCount);
+        totalNewForms.setAttribute('value', formCount + 1);
+
+        target.append(newExampleForm);
+    })
+</script>
 {% endblock %}

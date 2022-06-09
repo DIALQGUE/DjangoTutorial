@@ -1,5 +1,5 @@
 from django import forms
-from appSkills.models import Skill
+from appSkills.models import Skill, SkillExample
 
 class addSkillForm(forms.ModelForm):
     class Meta:
@@ -7,16 +7,10 @@ class addSkillForm(forms.ModelForm):
         fields = '__all__'
         labels = {
             'title' : 'Title',
-            'example' : 'Example',
-            'exampleName' : 'Example name',
-            'description' : 'Description'
         }
 
     def __init__(self, *args, **kwargs):
         super(addSkillForm, self).__init__(*args, **kwargs)
-        self.fields['example'].required = False
-        self.fields['exampleName'].required = False
-        self.fields['description'].required = False
         
     level = forms.ChoiceField(
         choices = Skill.LEVEL,
@@ -24,3 +18,14 @@ class addSkillForm(forms.ModelForm):
         label = "Level",
         widget = forms.RadioSelect
         )
+
+addSkillExampleFormSet = forms.modelformset_factory(
+    model = SkillExample,
+    fields = ['title', 'URLs', 'description'],
+    labels = {
+            'title' : 'Example title',
+            'URLs' : 'Example URLs',
+            'description' : 'Example Description'
+        },
+    extra = 0
+)

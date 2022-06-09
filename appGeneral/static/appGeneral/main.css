@@ -78,6 +78,10 @@ a {
     text-decoration: none;
 }
 
+.hidden {
+    display: none;
+}
+
 .center {
     display: flex;
     justify-content: center;
@@ -273,4 +277,17 @@ input[type = "text"]:focus {
 .skillBlock a:hover{
     color: lightseagreen;
     text-decoration: underline;
+}
+
+.example {
+    margin-bottom: 12px;
+    padding: 12px 12px;
+
+    background-color: lightcyan;
+    border: none;
+    border-radius: 6px;
+}
+
+.multipleForm {
+    margin-bottom: 60px;
 }
