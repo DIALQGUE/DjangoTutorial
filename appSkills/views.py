@@ -54,18 +54,31 @@ def editSkill(request, skillID):
     except:
         print('Skill not found')
         return render(request, 'appSkills/Skill.html', {'skill': None})
-    
+
+    exampleList = SkillExample.objects.filter(skillID = skill)
+
     if request.method == 'POST':
-        form = addSkillForm(request.POST, instance = skill)
-        if form.is_valid():
-            form.save()
+        skillForm = addSkillForm(request.POST, instance = skill)
+        exampleFormSet = addSkillExampleFormSet(request.POST, queryset = exampleList)
+        if all([skillForm.is_valid(), exampleFormSet.is_valid()]):
+            skillID = skillForm.save()
+            examples = exampleFormSet.save(commit = False)
+            for example in examples:
+                example.skillID = skillID
+                example.save()
             return HttpResponseRedirect(reverse('skills'))
         else:
-            print(form.errors)
+            print(skillForm.errors)
+            print(exampleFormSet.errors)
     else:
-        form = addSkillForm(instance = skill)
+        skillForm = addSkillForm(instance = skill)
+        exampleFormSet = addSkillExampleFormSet(queryset = exampleList)
 
-    context = {'form': form, 'skillID': skillID}
+    context = {
+        'skillForm': skillForm,
+        'exampleFormSet': exampleFormSet,
+        'skillID': skillID
+        }
     return render(request, 'appSkills/editSkill.html', context)
 
 def deleteSkill(request, skillID):

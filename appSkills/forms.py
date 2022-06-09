@@ -1,3 +1,4 @@
+from faulthandler import disable
 from django import forms
 from appSkills.models import Skill, SkillExample
 
@@ -19,13 +20,21 @@ class addSkillForm(forms.ModelForm):
         widget = forms.RadioSelect
         )
 
-addSkillExampleFormSet = forms.modelformset_factory(
-    model = SkillExample,
-    fields = ['title', 'URLs', 'description'],
-    labels = {
+class addSkillExampleForm(forms.ModelForm):
+    class Meta:
+        model = SkillExample
+        fields = ['title', 'URLs', 'description']
+        labels = {
             'title' : 'Example title',
             'URLs' : 'Example URLs',
-            'description' : 'Example Description'
-        },
-    extra = 0
+            'description' : 'Example description',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(addSkillExampleForm, self).__init__(*args, **kwargs)
+
+addSkillExampleFormSet = forms.modelformset_factory(
+    SkillExample,
+    form = addSkillExampleForm,
+    extra = 0,
 )
