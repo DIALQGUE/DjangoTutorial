@@ -267,6 +267,7 @@ input[type = "text"]:focus {
     background-color: lightcyan;
     padding: 12px 12px;
     transition: 300ms;
+    width: 100%;
 }
 
 .skillBlock:hover{
